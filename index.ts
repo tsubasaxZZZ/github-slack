@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
-const { App } = require('@slack/bolt');
-//import { App } from "@slack/bolt";
+import { App } from "@slack/bolt";
 
 dotenv.config({ path: `${__dirname}/.env` });
 const app = new App(
@@ -19,13 +18,16 @@ type Event = {
     say: (message: string) => void,
     context: { botToken: string }
 };
+
 (async () => {
     await app.start(process.env.PORT || 3000);
-    await app.event('app_mention', async (event: Event) => {
+    await app.event('app_mention', async (event) => {
         const result = await app.client.channels.info({
             token: event.context.botToken,
             channel: event.event.channel
         });
-        event.say(`Hello world, <@${event.event.user}>! This team is ${result.channel.name}. <#${event.event.channel}>`);
+        const channel_name = (result.channel as any).name
+        console.log(channel_name);
+        event.say(`Hello world, <@${event.event.user}>! This team is ${channel_name}. <#${event.event.channel}>`);
     });
 })();
