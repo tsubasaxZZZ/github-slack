@@ -35,8 +35,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-require('dotenv').config();
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var dotenv = __importStar(require("dotenv"));
 var App = require('@slack/bolt').App;
+//import { App } from "@slack/bolt";
+dotenv.config({ path: __dirname + "/.env" });
 var app = new App({
     token: process.env.SLACK_BOT_TOKEN,
     signingSecret: process.env.SLACK_SIGNING_SECRET
@@ -47,7 +57,24 @@ var app = new App({
             case 0: return [4 /*yield*/, app.start(process.env.PORT || 3000)];
             case 1:
                 _a.sent();
+                return [4 /*yield*/, app.event('app_mention', function (event) { return __awaiter(void 0, void 0, void 0, function () {
+                        var result;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, app.client.channels.info({
+                                        token: event.context.botToken,
+                                        channel: event.event.channel
+                                    })];
+                                case 1:
+                                    result = _a.sent();
+                                    event.say("Hello world, <@" + event.event.user + ">! This team is " + result.channel.name + ". <#" + event.event.channel + ">");
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); })];
+            case 2:
+                _a.sent();
                 return [2 /*return*/];
         }
     });
-}); });
+}); })();
