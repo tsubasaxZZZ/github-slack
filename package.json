@@ -5,7 +5,6 @@
     "main": "index.js",
     "dependencies": {
         "@slack/bolt": "^1.5.0",
-        "@types/dotenv": "^8.2.0",
         "axios": "^0.19.2",
         "dotenv": "^8.2.0"
     },
@@ -13,6 +12,7 @@
         "@types/chai": "^4.2.7",
         "@types/mocha": "^5.2.7",
         "@types/node": "^13.1.8",
+        "@types/dotenv": "^8.2.0",
         "@typescript-eslint/eslint-plugin": "^2.17.0",
         "@typescript-eslint/parser": "^2.17.0",
         "chai": "^4.2.0",
@@ -29,7 +29,8 @@
     "scripts": {
         "test": "tsc && mocha --timeout 2500 --require ts-node/register --watch-extensions ts \"test/**/*.ts\"",
         "build": "tsc",
-        "start": "tsc && node index.js",
+        "buildandstart": "tsc && node index.js",
+        "start": "node index.js",
         "lint": "eslint",
         "ngrok": "ngrok http 3000"
     },
