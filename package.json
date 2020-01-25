@@ -27,11 +27,12 @@
         "typescript": "^3.7.5"
     },
     "scripts": {
+        "pretest": "sh ./prestart.sh",
         "test": "tsc && mocha --timeout 2500 --require ts-node/register --watch-extensions ts \"test/**/*.ts\"",
         "build": "tsc",
         "buildandstart": "tsc && node index.js",
+        "prestart": "sh ./prestart.sh",
         "start": "node index.js",
-        "lint": "eslint",
         "ngrok": "ngrok http 3000"
     },
     "author": "",
