@@ -23,7 +23,7 @@ const app = new App(
                 text: `Please confirm how to instruction: /todo <ToDo title>`,
             });
         } else {
-            const [data, errors] = await ga.createGitHubIssue({ author: "tsubasaxZZZ", repositoryName: process.env.GITHUB_REPOSITORY_NAME || "daily-tasks", title: `${command.text}`, body: "", labelName: `${command.channel_name}` });
+            const [data, errors] = await ga.createGitHubIssue({ author: "tsubasaxZZZ", repositoryName: process.env.GH_REPOSITORY_NAME || "daily-tasks", title: `${command.text}`, body: "", labelName: `${command.channel_name}` });
             if (errors) {
                 console.log(errors);
                 say(`Error happend: ${errors}`);

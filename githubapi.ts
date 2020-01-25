@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
  * Config
  */
 dotenv.config({ path: `${__dirname}/.env` });
-const ACCESS_TOKEN = process.env.GITHUB_PAT;
+const ACCESS_TOKEN = process.env.GH_PAT;
 const ENDPOINT = "https://api.github.com/graphql";
 
 type Issue = {
