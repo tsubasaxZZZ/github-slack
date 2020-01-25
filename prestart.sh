@@ -11,3 +11,4 @@ if [ -z "$ENV_URL" ]; then
 fi
 
 curl "$ENV_URL" -o .env
+
