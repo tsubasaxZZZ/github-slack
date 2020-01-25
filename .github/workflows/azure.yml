@@ -17,10 +17,10 @@ env:
   AZURE_WEBAPP_NAME: nomuprobot    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '12.x'                # set this to the node version to use
-  SLACK_SIGNING_SECRET: ${{env.SLACK_SIGNING_SECRET}}
-  SLACK_BOT_TOKEN: ${{env.SLACK_BOT_TOKEN}}
-  GH_PAT: ${{env.GH_PAT}}
-  GH_REPOSITORY_NAME: ${{env.GH_REPOSITORY_NAME}}
+  SLACK_SIGNING_SECRET: ${{secrets.SLACK_SIGNING_SECRET}}
+  SLACK_BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
+  GH_PAT: ${{secrets.GH_PAT}}
+  GH_REPOSITORY_NAME: ${{secrets.GH_REPOSITORY_NAME}}
 
 jobs:
   build-and-deploy:
